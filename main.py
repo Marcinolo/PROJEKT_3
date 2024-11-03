@@ -12,7 +12,7 @@ model = loaded['model']
 scaler = loaded['scaler']
 
 app = FastAPI()
-templates = Jinja2Templates(directory="templates")  # Upewnij się, że folder "templates" istnieje
+templates = Jinja2Templates(directory="templates")  
 
 # Definiowanie modelu danych wejściowych
 class ClientData(BaseModel):
@@ -76,8 +76,4 @@ async def predict_churn(
     except Exception as e:
         print(f"Błąd: {e}")
         return templates.TemplateResponse("error.html", {"request": request, "error": str(e)})
-    #return templates.TemplateResponse("result.html", {"request": request, "probability stay": int(prediction[0])})
-
-# Aby uruchomić serwer, użyj polecenia:
-# uvicorn your_file_name:app --reload
 
